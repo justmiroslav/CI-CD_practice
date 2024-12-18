@@ -31,6 +31,7 @@ jobs:
     - run: npm run test
     - name: Vitest Coverage Report
       uses: davelosert/vitest-coverage-report-action@v2.7.0
+      if: always()
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         vite-config-path: vite.config.ts
