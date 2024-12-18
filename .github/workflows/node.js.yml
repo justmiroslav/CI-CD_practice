@@ -28,4 +28,8 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - run: npm run test
+    - name: Vitest Coverage Report
+      uses: davelosert/vitest-coverage-report-action@v2.7.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
