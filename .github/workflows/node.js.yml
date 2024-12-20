@@ -90,6 +90,14 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            if [ ! -d "ci-cd_practice" ]; then
+              git clone https://github.com/justmiroslav/ci-cd_practice.git
+              cd ci-cd_practice
+            else
+              cd ci-cd_practice
+              git pull
+            fi
+            
             kubectl apply -f k8s/deployment.yml
             kubectl apply -f k8s/service.yml
             minikube service rocketdex-service --url
